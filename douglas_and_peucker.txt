@@ -1,0 +1,20 @@
+
+
+
+douglas_and_peucker(list_of_points, tolerance):
+	furthest_point = NONE
+	max_dist = 0
+	FOR point in list_of_points
+		dist = distance_of_pt_to_line(list_of_points[0], list_of_points[end], point)
+		IF dist > max_dist:
+			furthest_point = point
+			max_dist = dist
+		ENDIF 
+	ENDFOR
+
+	IF max_dist <= tolerance
+		draw_straight_line(list_of_points[0], list_of_points[end])
+	ELSE
+		douglas_and_peucker(list_of_points[0 ... furthest_point], tolerance)
+		douglas_and_peucker(list_of_points[furthest_point+1 ... end], tolerance)
+	ENDIF

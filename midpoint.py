@@ -4,7 +4,6 @@ import matplotlib.image as mpimg
 import matplotlib.cm as cm
 
 
-
 def draw_octant_1(x_start, y_start, x_end, y_end, img, img_n):
 	# k(x, y) = ax + by + c
 	# k < 0 -> above the line
@@ -12,8 +11,6 @@ def draw_octant_1(x_start, y_start, x_end, y_end, img, img_n):
 	a = float((y_end-y_start))
 	b = float(-(x_end-x_start))
 	c = float(x_end*y_start - x_start*y_end)
-
-	m = -a/b
 
 	x = round(x_start)
 	y = round((-a*x - c)/b)
@@ -43,7 +40,7 @@ def draw_octant_2(x_start, y_start, x_end, y_end, img, img_n):
 	a = float((y_end-y_start))
 	b = float(-(x_end-x_start))
 	c = float(x_end*y_start - x_start*y_end)
-	m = -a/b
+
 	x = round(x_start)
 	y = round((-a*x - c)/b)
 
@@ -75,7 +72,6 @@ def draw_octant_8(x_start, y_start, x_end, y_end, img, img_n):
 	a = float((y_end-y_start))
 	b = float(-(x_end-x_start))
 	c = float(x_end*y_start - x_start*y_end)
-	m = -a/b
 	x = round(x_start)
 	y = round((-a*x - c)/b)
 
