@@ -14,7 +14,7 @@ def draw_bezier(p0, p1, p2, p3, tolerance, img, img_n):
 	(p3x, p3y) = p3
 
 	# check to see if we can approximate with a flat line
-	if is_flat(p0, p1, p3, tolerance):
+	if is_flat(p0, p3, p1, tolerance) and is_flat(p0, p3, p2, tolerance):
 		line_drawing.midpoint_line_drawing(p0x, p0y, p3x, p3y, img, img_n)
 	else:
 		# split into two bezier curves

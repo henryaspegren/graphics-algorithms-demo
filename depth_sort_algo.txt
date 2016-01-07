@@ -1,0 +1,31 @@
+
+DEPTH_SORT_ALGO
+1) Transform all polygon vertices into viewing co-ordinates 
+and project these into 2D (simply multiply them projection matrix),
+keeping z information
+2) Calculate a depth ordering for the polygons, based on the most distant
+z co-ordinate in each polygon
+3) Resolve any ambiguities caused by polygons overlapping in z
+*** THIS STEP IS CHALLENGING **** accomplished via 
+subroutine: RESOLVE_AMBIGUITIES
+4) Draw the polygons in depth order from back to front. We can do this
+with 2D scan conversion algo on the projected verticies
+"painter's algorithm" -> closer, later objects are drawn on top of further 
+earlier ones
+
+
+RESOLVE_AMBIGUITIES
+FOR the rearmost polygon P in the list, need to compare each polygon, Q,
+which overlaps P in z
+test --> can i draw P before Q
+	1) do the polygons y extents not overlap?
+	2) do the polygons x extents not overlap?
+	3) is P entirely on the opposite side of Q's plane from the viewpoint
+	4) is Q entirely on the same side of P's plane as the viewpoint?
+
+	If all 4 tests fail, repeat 3 and 4 with P and Q swapped, if true
+	swap P and Q
+
+	Otherwise split either P or Q by the plane of the other
+	*** NEED AN ALGORITHM FOR THIS ****, throw away
+	the original polygon and insert the two pieces into the list

@@ -1,0 +1,24 @@
+FOR clipping line on the convex clipping polygon
+	FOR every edge in the arbitrary polygon
+	// walk the polygon
+	// the case is determined by evaluating the 
+	// decision function at the end points of the line
+	// as in the midpoint algorithm
+		IF edge crosses the clipping line
+			IF crossing from inside --> outside
+				output new vertex at crossing point
+			ENDIF
+			IF crossing from outside --> inside
+				output new vertex at crossing point and end vertex
+			ENDIF
+		ELSE
+			IF inside clipping line
+				output end vertex
+			ENDIF
+			IF outside clipping line
+				do nothing
+		ENDIF
+	ENDFOR
+ENDFOR
+
+draw lines through verticies

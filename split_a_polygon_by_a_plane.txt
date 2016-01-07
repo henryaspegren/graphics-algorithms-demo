@@ -1,0 +1,23 @@
+SPLIT_POLYGON_BY_PLANE
+FOR every edge in the polygon
+	// plane is defined by ax+by+cz+d = 0
+	// evaluate k = ax+by+cz+d 
+	// k > 0 outside
+	// k = 0 on plane
+	// k < 0 inside
+	EVALUATE k for each endpoint
+	IF edge crosses the clipping line
+		IF crossing from inside --> outside
+			output new vertex at crossing point
+		ENDIF
+		IF crossing from outside --> inside
+			output new vertex at crossing point and end vertex
+		ENDIF
+	ELSE
+		IF inside clipping line
+			output end vertex
+		ENDIF
+		IF outside clipping line
+			do nothing
+	ENDIF
+ENDFOR
